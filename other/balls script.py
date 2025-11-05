@@ -2,8 +2,8 @@ import turtle
 from random import  *
 from time import sleep
 
-width = 650
-height = 500
+width = 1150
+height = 650
 turtle.colormode(255)
 turtle.bgcolor((0,0,0))
 turtle.pensize(2)
@@ -19,7 +19,7 @@ ballgreen = 0
 ballblue = 0
 colours = []
 
-numOfBalls = 40000
+numOfBalls = 20000
 colourStep = (15777216 // numOfBalls)
 
 for i in range(numOfBalls):
@@ -63,8 +63,8 @@ for i in range(len(colours)):
 turtle.update()
 turtle.getcanvas().postscript(file="ballsimg.eps")
 
+turtle.tracer(1)
 
-turtleX = turtleX**2
+turtleX = width ** 2
 while True:
-    turtle.goto(turtleX, turtleY)
-
+    turtle.goto(width/2,height/2)
