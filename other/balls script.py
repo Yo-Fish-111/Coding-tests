@@ -1,9 +1,11 @@
 import turtle
 from random import  *
 from time import sleep
+import os
 
-width = 1150
-height = 650
+
+width = 500
+height = 500
 turtle.colormode(255)
 turtle.bgcolor((0,0,0))
 turtle.pensize(2)
@@ -19,7 +21,7 @@ ballgreen = 0
 ballblue = 0
 colours = []
 
-numOfBalls = 20000
+numOfBalls = 30000
 colourStep = (15777216 // numOfBalls)
 
 for i in range(numOfBalls):
@@ -48,6 +50,8 @@ for i in range(len(colours)):
     turtle.pensize(randint(1,3))
     turtleX= turtleX+randint(-10,10)
     turtleY= turtleY+randint(-10,10)
+    if i % 25000 == 0:
+        turtle.update()
     while turtleX > width/2:
         turtleX = turtleX-width
     while turtleX < -width/2:
@@ -61,7 +65,18 @@ for i in range(len(colours)):
     print(i)
 
 turtle.update()
-turtle.getcanvas().postscript(file="ballsimg.eps")
+
+fileName = "ballsimg"
+
+i = 1
+while os.path.exists(fileName + ".eps"):
+    if fileName[-3:] == f"({i-1})":
+        fileName = fileName[:-3] + f"({i})"
+    else:
+        fileName = fileName + f"({i})"
+    print(fileName)
+    i+=1
+turtle.getcanvas().postscript(file=fileName + ".eps", width=width, height=height, pageanchor="nw")
 
 turtle.tracer(1)
 
