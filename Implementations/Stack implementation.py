@@ -8,6 +8,8 @@ def declareStack(desiredLength, dataType="CHAR"):
         stack = [False for i in range(desiredLength)]
     if dataType.upper() == "FLOAT":
         stack = [i/(1) for i in range(desiredLength)]
+    if dataType.upper() == "LIST":
+        stack = [[i, i+1] for i in range(desiredLength)]
     else:
         stack = ["" for i in range(desiredLength)]
     topPointer = -1
